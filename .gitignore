@@ -1,0 +1,5 @@
+__pycache__/
+*.pyproj
+*.pyproj.user
+*.txt
+venv/

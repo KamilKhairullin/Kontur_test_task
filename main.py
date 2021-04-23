@@ -1,18 +1,16 @@
-import load.data_loader as dl
-import train.trainer as tr
-import evaluate.evaluator as ev
-import nltk 
+import nltk
+import models.truecaser as tc
 
-tokens, wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist  = dl.load_data('train.txt')
-uniDist, backwardBiDist, forwardBiDist, trigramDist, wordCasingLookup = tr.train(tokens, wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist)
-
+model = tc.Truecaser()
+#tokens = model.fit('train2.txt', 3)
+#model.train()
 testSentences = [
 "ЗАО ПРЕДПРИЯТИЕ ПОЖАРНОЙ БЕЗОПАСНОСТИ 'ПОЖКОМПЛЕКТ-1'"
 ]
 
-
+tokens = []
 for sentence in testSentences:
     tokensCorrect = nltk.word_tokenize(sentence)
     tokens = [token.lower() for token in tokensCorrect]
-    tokensTrueCase = ev.getTrueCase(tokens, 'title', wordCasingLookup, uniDist, backwardBiDist, forwardBiDist, trigramDist)
-    print(" ".join(tokensTrueCase))
+
+model.predict(tokens)

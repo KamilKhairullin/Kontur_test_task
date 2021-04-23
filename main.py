@@ -2,15 +2,18 @@ import nltk
 import models.truecaser as tc
 
 model = tc.Truecaser()
-#tokens = model.fit('train2.txt', 3)
-#model.train()
+tokens = model.fit('train.txt', 30000)
+model.train()
+
 testSentences = [
-"ЗАО ПРЕДПРИЯТИЕ ПОЖАРНОЙ БЕЗОПАСНОСТИ 'ПОЖКОМПЛЕКТ-1'"
+'ГОСУДАРСТВЕННОЕ УЧРЕЖДЕНИЕ "ГОСУДАРСТВЕННАЯ СЕМЕННАЯ ИНСПЕКЦИЯ" АЗНАКАЕВСКОГО РАЙОНА',
+'ГОССЕМИНСПЕКЦИЯ АЗНАКАЕВСКОГО РАЙОНА',
+'ОТКРЫТОЕ АКЦИОНЕРНОЕ ОБЩЕСТВО "АЗНАКАЙ КИЕМНЭРЕ"'
 ]
 
 tokens = []
 for sentence in testSentences:
     tokensCorrect = nltk.word_tokenize(sentence)
     tokens = [token.lower() for token in tokensCorrect]
-
-model.predict(tokens)
+    x = model.predict(tokens)
+    print(" ".join(x))

@@ -31,9 +31,81 @@ class Truecaser():
             self.__create_back_bigram(token)
             self.__create_trigram(token)
 
-    def predict(self, tokens):
-        for token in tokens:
-            print(token)
+    def predict(self, sentence):
+        sentenceTrueCase = []
+        for i in range(0, len(sentence)):
+            word = sentence[i]
+            if word in string.punctuation or word.isdigit():
+                sentenceTrueCase.append(word)
+            elif word in self.casing_vocabulary:
+                if len(self.casing_vocabulary[word]) == 1:
+                    sentenceTrueCase.append(list(self.casing_vocabulary[word])[0])
+                else:
+                    previous_word = sentence[i - 1] if i > 0  else None
+                    next_word = sentence[i + 1] if (i < len(sentence) - 1) else None
+                    best_word = self.__get_best_word(word, previous_word, next_word)
+                    sentenceTrueCase.append(best_word)
+            else:
+                sentenceTrueCase.append(word.title())
+        return sentenceTrueCase
+                
+    def __get_best_word(self, word, previous_word, next_word):
+        predicted_word = None
+        highest_score = float("-inf")
+
+        for possible_word in self.casing_vocabulary[word]:
+            score = self.__get_score(possible_word, previous_word, next_word)
+            if score > highest_score:
+                predicted_word = possible_word
+                highest_score = score
+        return predicted_word
+
+    def __get_score(self, word, previous_word, next_word):
+        k = 5.0
+        unigram_score = self.__get_unigram_score(word, k)
+        back_bigram_score = self.__get_back_bigram_score(word, previous_word, k)
+        forward_bigram_score = self.__get_forward_bigram_score(word, next_word, k)
+        trigram_score = self.__get_trigram_score(word, previous_word, next_word, k)
+        score = math.log(unigram_score) + math.log(back_bigram_score) + math.log(forward_bigram_score) + math.log(trigram_score)
+        return score
+
+    def __get_unigram_score(self, word, coefficient):
+        divisor = self.unigram[word] + coefficient
+        denominator = 0
+        for case in self.casing_vocabulary[word.lower()]:
+            denominator += self.unigram[case] + coefficient
+        return divisor / denominator
+
+    def __get_back_bigram_score(self, word, previous_word, coefficient):
+        if previous_word != None:  
+            divisor = self.back_bigram[previous_word + '_' + word] + coefficient
+            denominator = 0    
+            for case in self.casing_vocabulary[word.lower()]:
+                denominator += self.back_bigram[previous_word + '_'+ word] + coefficient
+            return divisor / denominator
+        else:
+            return 1
+
+    def __get_forward_bigram_score(self, word, next_word, coefficient):
+        if next_word != None:  
+            divisor = self.forward_bigram[word + '_' + next_word] + coefficient
+            denominator = 0    
+            for case in self.casing_vocabulary[word.lower()]:
+                denominator += self.forward_bigram[word + '_'+ next_word] + coefficient
+            return divisor / denominator
+        else:
+            return 1
+
+    def __get_trigram_score(self, word, previous_word, next_word, coefficient):
+        if previous_word != None and next_word != None:
+            # ??? Ensure next token is lower case - YES ! FIX
+            divisor = self.trigram[previous_word + "_" + word + "_" + next_word] + coefficient
+            denominator = 0    
+            for case in self.casing_vocabulary[word.lower()]:
+                denominator += self.trigram[previous_word + "_" + word + "_" + next_word] + coefficient
+            return divisor / denominator
+        else:
+            return 1
 
 
     def __create_unigram(self, sentence):

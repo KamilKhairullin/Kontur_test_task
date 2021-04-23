@@ -45,6 +45,8 @@ class Truecaser():
                     next_word = sentence[i + 1] if (i < len(sentence) - 1) else None
                     best_word = self.__get_best_word(word, previous_word, next_word)
                     sentenceTrueCase.append(best_word)
+                if i == 0:
+                    sentenceTrueCase[0] = sentenceTrueCase[0][0].upper() + sentenceTrueCase[0][1:]
             else:
                 sentenceTrueCase.append(word.title())
         return sentenceTrueCase

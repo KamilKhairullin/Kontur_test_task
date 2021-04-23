@@ -1,6 +1,7 @@
 import nltk
 import string
 import math
+import pickle
 
 class Truecaser():
 
@@ -50,7 +51,25 @@ class Truecaser():
             else:
                 sentenceTrueCase.append(word.title())
         return sentenceTrueCase
-                
+    
+    def save_model(self, name):
+        f = open(name, 'wb')
+        pickle.dump(self.unigram, f, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(self.back_bigram, f, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(self.forward_bigram, f, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(self.trigram, f, protocol=pickle.HIGHEST_PROTOCOL)
+        pickle.dump(self.casing_vocabulary, f, protocol=pickle.HIGHEST_PROTOCOL)
+        f.close()
+
+    def load_model(self, path):
+        f = open(path, 'rb')
+        self.unigram = pickle.load(f)
+        self.back_bigram = pickle.load(f)
+        self.forward_bigram = pickle.load(f)
+        self.trigram = pickle.load(f)
+        self.casing_vocabulary = pickle.load(f)
+        f.close()
+
     def __get_best_word(self, word, previous_word, next_word):
         predicted_word = None
         highest_score = float("-inf")
@@ -108,7 +127,6 @@ class Truecaser():
             return divisor / denominator
         else:
             return 1
-
 
     def __create_unigram(self, sentence):
         for i in range(0, len(sentence)):

@@ -1,5 +1,7 @@
 __pycache__/
+*.rar
 *.pyproj
 *.pyproj.user
 *.txt
+*.obj
 venv/

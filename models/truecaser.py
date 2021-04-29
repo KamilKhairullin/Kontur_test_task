@@ -1,7 +1,7 @@
-import nltk
 import string
 import math
 import pickle
+import nltk
 
 class Truecaser():
 
@@ -22,6 +22,10 @@ class Truecaser():
             if i == 0:
                 break
         tokens = [nltk.word_tokenize(sentence) for sentence in sentences]
+        for token in tokens:
+          if not token[0].isupper():
+                token[0] = token[0][0].lower() + token[0][1:]
+            
         self.tokens = tokens
         return tokens
 
@@ -47,7 +51,10 @@ class Truecaser():
                     best_word = self.__get_best_word(word, previous_word, next_word)
                     sentenceTrueCase.append(best_word)
                 if i == 0:
-                    sentenceTrueCase[0] = sentenceTrueCase[0][0].upper() + sentenceTrueCase[0][1:]
+                    if sentenceTrueCase[0] not in string.punctuation: 
+                        sentenceTrueCase[0] = sentenceTrueCase[0][0].upper() + sentenceTrueCase[0][1:]
+                    else:
+                        sentenceTrueCase[0] = sentenceTrueCase[0][0] + sentenceTrueCase[0][1].upper() + sentenceTrueCase[0][1:]
             else:
                 sentenceTrueCase.append(word.title())
         return sentenceTrueCase

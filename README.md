@@ -48,9 +48,16 @@
 <br/>
 Так же, чтобы убедится, что алгоритм не добавил лишний пробел, я написал функцию, которая проверяет char-by-char соответствие test и predicted файлов.
 
-## Как запустить
+## Как запустить + требования
 
-## Требования
+Требования:
+click==7.1.2
+joblib==1.0.1
+nltk==3.6.2
+regex==2021.4.4
+tqdm==4.60.0
 
 ## Источники
+1. [Lucian Vlad Lita, Abe Ittycheriah, Salim Roukos, Nanda Kambhatla (2003). tRuEcasIng](https://www.cs.cmu.edu/~llita/papers/lita.truecasing-acl2003.pdf)
+2. [Nils Reimers (2016). truecaser](https://github.com/nreimers/truecaser)
 

@@ -6,12 +6,12 @@ import nltk
 class Truecaser():
 
     def __init__(self):
-        self.tokens = []
-        self.unigram = nltk.FreqDist()
-        self.back_bigram = nltk.FreqDist() 
-        self.forward_bigram = nltk.FreqDist() 
-        self.trigram = nltk.FreqDist() 
-        self.casing_vocabulary = dict()
+        self.__tokens = []
+        self.__unigram = nltk.FreqDist()
+        self.__back_bigram = nltk.FreqDist() 
+        self.__forward_bigram = nltk.FreqDist() 
+        self.__trigram = nltk.FreqDist() 
+        self.__casing_vocabulary = dict()
 
     def fit(self, path_to_txt, limit):
         i = limit

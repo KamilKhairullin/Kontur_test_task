@@ -1,3 +1,4 @@
+![c8979208 (1)](https://user-images.githubusercontent.com/54369751/116721103-9e195f80-a9e5-11eb-9fb2-80342db1e066.png)
 # Тестовое задание. Контур, Data Science 2021.
 Камиль Хайруллин (Kamil Khairullin, k.hayrullin@innopolis.university)
 

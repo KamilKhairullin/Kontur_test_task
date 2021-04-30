@@ -23,4 +23,4 @@
 
 После чего выдаётся самый вероятный casing. 
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=score(w_0)&space;=&space;P_{unigram}(w_0)&space;*&space;P_{forward&space;bigram}
+<a href="https://www.codecogs.com/eqnedit.php?latex=score(w_0)&space;=&space;P_{unigram}(w_0)&space;*&space;P_{forward&space;bigram}(w_0,&space;w_1)&space;*&space;P_{backward&space;bigram}(w_{-1},&space;w_0)&space;*&space;P_{trigram}(w_{-1},&space;w_0,&space;w_1)" target="_blank"><img src="https://latex.codecogs.com/png.latex?score(w_0)&space;=&space;P_{unigram}(w_0)&space;*&space;P_{forward&space;bigram}(w_0,&space;w_1)&space;*&space;P_{backward&space;bigram}(w_{-1},&space;w_0)&space;*&space;P_{trigram}(w_{-1},&space;w_0,&space;w_1)" title="score(w_0) = P_{unigram}(w_0) * P_{forward bigram}(w_0, w_1) * P_{backward bigram}(w_{-1}, w_0) * P_{trigram}(w_{-1}, w_0, w_1)" /></a>

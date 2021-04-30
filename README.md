@@ -23,7 +23,6 @@
 А так же жадный алгоритм, который высчитывает вероятность написания слова на основе четырёх вышеупомянутых структур.
 
 ![CodeCogsEqn](https://user-images.githubusercontent.com/54369751/116720543-ff8cfe80-a9e4-11eb-9a05-e8115d5392a8.png)
-
-После чего выдаётся самый вероятный casing. 
 ![q2eq](https://user-images.githubusercontent.com/54369751/116721183-b5584d00-a9e5-11eb-989d-4bfede9d5beb.png)
+После чего выдаётся самый вероятный casing. 
 

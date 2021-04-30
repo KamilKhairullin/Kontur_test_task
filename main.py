@@ -10,11 +10,13 @@ pred_path = 'tests/test_2.txt'
 
 model = tc.Truecaser()
 #load model
-model.load_model('model.obj')
+#model.load_model('model.obj')
 
 #fit model with train data.
-#tokens = model.fit('/content/drive/MyDrive/train.txt')
-#model.train()
+tokens = model.fit(test_path)
+model.train()
+
+#(!!!) to save model, at first create empty model.obj
 #model.save_model('model.obj')
 
 #clear predict file 

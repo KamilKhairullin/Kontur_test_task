@@ -6,12 +6,12 @@ import nltk
 class Truecaser():
 
     def __init__(self):
-        self.__tokens = []
-        self.__unigram = nltk.FreqDist()
-        self.__back_bigram = nltk.FreqDist() 
-        self.__forward_bigram = nltk.FreqDist() 
-        self.__trigram = nltk.FreqDist() 
-        self.__casing_vocabulary = dict() #maps word in lower case to all it's casing variations (String : set{String})
+        self.tokens = []
+        self.unigram = nltk.FreqDist()
+        self.back_bigram = nltk.FreqDist() 
+        self.forward_bigram = nltk.FreqDist() 
+        self.trigram = nltk.FreqDist() 
+        self.casing_vocabulary = dict() #maps word in lower case to all it's casing variations (String : set{String})
 
     """ fit()
     This is where the data is preprocessed: 

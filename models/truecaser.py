@@ -21,10 +21,13 @@ class Truecaser():
             i = i  - 1
             if i == 0:
                 break
-        tokens = [nltk.word_tokenize(sentence) for sentence in sentences]
+        tokens = [sentence.split(" ") for sentence in sentences]
         for token in tokens:
           if not token[0].isupper():
-                token[0] = token[0][0].lower() + token[0][1:]
+              if token[0] not in string.punctuation: 
+                  token[0] = token[0][0].lower() + token[0][1:]
+              elif len(token[0]) > 2:
+                  token[0] = token[0][0] + token[0][1].lower() + token[0][1:]
             
         self.tokens = tokens
         return tokens
@@ -126,7 +129,6 @@ class Truecaser():
 
     def __get_trigram_score(self, word, previous_word, next_word, coefficient):
         if previous_word != None and next_word != None:
-            # ??? Ensure next token is lower case - YES ! FIX
             divisor = self.trigram[previous_word + "_" + word + "_" + next_word] + coefficient
             denominator = 0    
             for case in self.casing_vocabulary[word.lower()]:
@@ -146,7 +148,6 @@ class Truecaser():
             word = sentence[i]
             if word.lower() in self.casing_vocabulary and len(self.casing_vocabulary[word.lower()]) > 1:
                 previous_word = sentence[i - 1]
-                # ??? make previous word lower case before adding / or make current word -NO ! FIX
                 biword = previous_word + "_" + word
                 self.back_bigram[biword] += 1
             
@@ -156,7 +157,6 @@ class Truecaser():
 
             if word.lower() in self.casing_vocabulary and len(self.casing_vocabulary[word.lower()]) > 1:
                 next_word = sentence[i + 1]
-                # ??? make next word lower case before adding - YES ! FIX
                 biword = word + "_" + next_word
                 self.forward_bigram[biword] += 1
     
@@ -167,7 +167,6 @@ class Truecaser():
             if word.lower() in self.casing_vocabulary and len(self.casing_vocabulary[word.lower()]) > 1:
                 next_word = sentence[i + 1]
                 previous_word = sentence[i - 1]
-                # ??? make prev high and next lower - YES ! FIX
                 triword = previous_word + "_" + word + "_" + next_word
                 self.trigram[triword] += 1
 

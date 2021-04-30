@@ -13,14 +13,11 @@ class Truecaser():
         self.__trigram = nltk.FreqDist() 
         self.__casing_vocabulary = dict()
 
-    def fit(self, path_to_txt, limit):
-        i = limit
+    def fit(self, path_to_txt):
         sentences = []
         for sentence in open(path_to_txt, encoding='utf-8'):
             sentences.append(sentence.strip('\n'))
-            i = i  - 1
-            if i == 0:
-                break
+
         tokens = [sentence.split(" ") for sentence in sentences]
         for token in tokens:
           if not token[0].isupper():

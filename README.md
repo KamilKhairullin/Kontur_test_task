@@ -1,3 +1,5 @@
+![c8979208 (1)](https://user-images.githubusercontent.com/54369751/116721120-a376aa00-a9e5-11eb-96a2-5429b92c68a6.png)
+![q2eq](https://user-images.githubusercontent.com/54369751/116721142-a96c8b00-a9e5-11eb-9085-15cc85d83044.png)
 ![c8979208 (1)](https://user-images.githubusercontent.com/54369751/116721103-9e195f80-a9e5-11eb-9fb2-80342db1e066.png)
 # Тестовое задание. Контур, Data Science 2021.
 Камиль Хайруллин (Kamil Khairullin, k.hayrullin@innopolis.university)
@@ -23,6 +25,5 @@
 ![CodeCogsEqn](https://user-images.githubusercontent.com/54369751/116720543-ff8cfe80-a9e4-11eb-9a05-e8115d5392a8.png)
 
 После чего выдаётся самый вероятный casing. 
-
-![c8979208](https://user-images.githubusercontent.com/54369751/116721080-95288e00-a9e5-11eb-837a-60cceb8cdf0d.png)
+![q2eq](https://user-images.githubusercontent.com/54369751/116721183-b5584d00-a9e5-11eb-989d-4bfede9d5beb.png)
 

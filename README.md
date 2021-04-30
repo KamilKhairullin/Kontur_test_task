@@ -22,3 +22,5 @@
 ![CodeCogsEqn](https://user-images.githubusercontent.com/54369751/116720543-ff8cfe80-a9e4-11eb-9a05-e8115d5392a8.png)
 
 После чего выдаётся самый вероятный casing. 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=score(w_0)&space;=&space;P_{unigram}(w_0)&space;*&space;P_{forward&space;bigram}

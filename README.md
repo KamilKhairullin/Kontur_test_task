@@ -1,5 +1,6 @@
 # Тестовое задание. Контур, Data Science 2021.
-Камиль Хайруллин (Kamil Khairullin, k.hayrullin@innopolis.university)
+Камиль Хайруллин (Kamil Khairullin, k.hayrullin@innopolis.university) <br/>
+Ссылка на Github с проектом: 
 
 ## Описание проблемы
 
